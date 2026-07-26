@@ -12,11 +12,10 @@ function App(){
                 </header>
 
             <Routes>
-                <Route path='/' element={<App/>}/>  
             </Routes>
         </>
     )
-    //hacer hijos de pagina principal (ver detalles, formulario para subir una mascota)
+    //hacer hijos de mascotaspages (ver detalles, formulario para subir una mascota)
 }
 
 export default App;
