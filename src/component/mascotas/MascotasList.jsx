@@ -1,4 +1,12 @@
+import { useNavigate } from "react-router-dom";
+
 function MascotasList ({listamascotas}){
+    const navegate = useNavigate()
+
+    const handleVerDetalles = (id) => {
+        navegate(`/comentarios-detalles/${id}`)
+    } 
+
     return(
          <div>
       <h2>Listado de Mascotas</h2>
@@ -17,7 +25,7 @@ function MascotasList ({listamascotas}){
               <p>Edad: {m.edad}</p>
               <p>Sexo: {m.sexo}</p>
               <p>Tamaño: {m.tamano}</p>
-              <button>Ver comentarios</button>
+              <button onClick={() => handleVerDetalles(m.id)}>Ver Detalles</button>
             </li>
           ))}
         </ul>
