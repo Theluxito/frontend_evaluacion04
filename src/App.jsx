@@ -11,8 +11,8 @@ function App(){
                     </nav>
                 </header>
 
-            <Routes>
-            </Routes>
+            {/* <Routes>
+            </Routes> */}
         </>
     )
     //hacer hijos de mascotaspages (ver detalles, formulario para subir una mascota)

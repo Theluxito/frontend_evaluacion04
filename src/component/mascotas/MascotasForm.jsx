@@ -1,0 +1,112 @@
+import { useState } from 'react'
+import api from '../../services/Api'
+
+function MascotasForm({onMascotaCreada}){
+
+    const [nombre, setNombre] = useState("");
+    const [descripcion, setDescripcion] = useState("");
+    const [imagen, setImagen] = useState(null);
+    const [estado, setEstado] = useState("perdida");
+    const [tipoAnimal, setTipoAnimal] = useState("otro");
+    const [edad, setEdad] = useState("");
+    const [raza, setRaza] = useState("");
+    const [sexo, setSexo] = useState("");
+    const [tamano, setTamano] = useState("");
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData()
+        formData.append("nombre", nombre)
+        formData.append("descripcion", descripcion)
+        formData.append("imagen", imagen)
+        formData.append("estado", estado)
+        formData.append("tipo_animal", tipoAnimal)
+        if (edad) formData.append("edad", edad)
+        if (edad) formData.append("raza", raza)
+        if (edad) formData.append("sexo", sexo)
+        if (edad) formData.append("tamano", tamano)
+
+        try{
+            const response = await api.post("mascotas/", formData)
+            console.log("Mascota creada:", response.data)
+            alert("Se ha creado una mascota.")
+
+            setNombre("")
+            setDescripcion("")
+            setImagen(null)
+            setEstado("perdida")
+            setTipoAnimal("otro")
+            setEdad("")
+            setRaza("")
+            setSexo("")
+            setTamano("")
+            if (onMascotaCreada){
+                onMascotaCreada()
+            }
+        }catch(error){
+            console.error("Error al crear mascota", error.response)
+        }
+
+    };
+
+    return(
+        <form onSubmit={handleSubmit}>
+            <h2>Crear Mascota</h2>
+            <label>Nombre:</label>
+            <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)}/>
+
+            <label>Descripción:</label>
+            <input type="text" value={descripcion} onChange={(e) => setDescripcion(e.target.value)}/>
+
+            <label>Imagen:</label>
+            <input type="file" onChange={(e) => setImagen(e.target.files[0])}/>
+
+            <label>Estado:</label>
+            <select value={estado} onChange={(e) => setEstado(e.target.value)}>
+                <option value="perdida">Perdida</option>
+                <option value="encontrada">Encontrada</option>
+                <option value="en_adopcion">En adopción</option>
+                <option value="adoptada">Adoptada</option>
+            </select>
+            
+            <label>Tipo animal:</label>
+            <select value={tipoAnimal} onChange={(e) => setTipoAnimal(e.target.value)}>
+                <option value="perro">Perro</option>
+                <option value="gato">Gato</option>
+                <option value="ave">Ave</option>
+                <option value="roedor">Roedor</option>
+                <option value="reptil">Reptil</option>
+                <option value="otro">Otro</option>
+            </select>
+
+            <label>Edad:</label>
+            <input type="number" value={edad} onChange={(e) => setEdad(e.target.value)}/>
+            <p>Edad aproximada en años, si se conoce.</p>
+
+            <label>Raza:</label>
+            <input type="text" value={raza} onChange={(e) => setRaza(e.target.value)}/>
+
+            <label>Sexo:</label>
+            <select value={sexo} onChange={(e) => setSexo(e.target.value)}>
+                <option value="">--------</option>
+                <option value="macho">Macho</option>
+                <option value="hembra">Hembra</option>
+                <option value="desconocido">Desconocido</option>
+            </select>
+
+            <label>Tamaño:</label>
+            <select value={tamano} onChange={(e) => setTamano(e.target.value)}>
+                <option value="">--------</option>
+                <option value="pequeno">Pequeño</option>
+                <option value="mediano">Mediano</option>
+                <option value="grande">Grande</option>
+                <option value="desconocido">Desconocido</option>
+            </select>
+
+            <button type='submit'>Agregar</button>
+        </form>
+    )
+}
+
+export default MascotasForm;

@@ -1,4 +1,5 @@
 import MascotasList from "../component/mascotas/MascotasList";
+import MascotasForm from "../component/mascotas/MascotasForm";
 import api from "../services/Api";
 import { useEffect, useState } from "react";
 
@@ -23,7 +24,10 @@ function MascotasPage() {
   },[])
 
   return(
-   <MascotasList listamascotas={listaMascotas} />
+    <>
+      <MascotasForm onMascotaCreada={fetchMascotas}/>
+      <MascotasList listamascotas={listaMascotas} />
+    </>
 ) 
     
 
