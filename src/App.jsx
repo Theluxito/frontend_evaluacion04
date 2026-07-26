@@ -7,16 +7,16 @@ function App(){
             <h1><strong>Página de mascotas</strong></h1>
                 <header>
                     <nav>
-                        <NavLink to={"/MascotasPages"}>MascotasPages</NavLink> 
+                        <MascotasPage/> 
                     </nav>
                 </header>
 
             <Routes>
-                <Route path='/MascotasPages' element={<MascotasPage/>}/>  
+                <Route path='/' element={<App/>}/>  
             </Routes>
         </>
     )
-    //hacer hijos de mascotaspages (ver detalles, formulario para subir una mascota)
+    //hacer hijos de pagina principal (ver detalles, formulario para subir una mascota)
 }
 
 export default App;
