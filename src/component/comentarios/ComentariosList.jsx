@@ -1,4 +1,4 @@
-import { act, useState } from "react";
+import { useState } from "react";
 
 function ComentariosList({ comentarios, idMascota, addComentario, actualizar }) {
   const [nuevoComentario, setNuevoComentario] = useState("");
