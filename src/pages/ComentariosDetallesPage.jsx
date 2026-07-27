@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import api from "../services/Api";
 import ComentariosList from "../component/comentarios/ComentariosList";
 import "../component/ComentariosDetallesPage.css";
+import js from "@eslint/js";
 
 function ComentariosDetallesPage() {
   const { id } = useParams();
@@ -12,20 +13,32 @@ function ComentariosDetallesPage() {
   const fetchMascota = async (id) => {
     try {
       const response = await api.get(`mascotas/${id}/`);
-      console.log(response.data);
-
       if (response.status === 200) {
         setMascota(response.data);
       }
-    } catch (error) {}
+    } catch (error) {
+      if (error.response?.status === 404){
+        alert("Mascota no encontrada...")
+      }else{
+        alert("Error al cargar la mascota")
+      }
+    }
   };
 
   const updateEstado = async (id, data) => {
     try {
       const response = await api.patch(`mascotas/${id}/`, data);
-      console.log(response);
+      alert("Estado actualizado correctamente");
     } catch (error) {
-      console.error(error.response);
+      if (error.response?.status === 400){
+        alert("Error de validación: " + JSON.stringify(error.response?.data))
+      }else if (error.response?.status === 404){
+        alert("Mascota no encontrada...")
+      }else if (error.response?.status === 401){
+        alert("No tiene autorización...")
+      }else{
+        alert("Error inesperado...")
+      }
     } finally {
       fetchMascota(id);
     }
@@ -34,9 +47,15 @@ function ComentariosDetallesPage() {
   const addComentario = async (data) => {
     try {
       const response = await api.post("comentarios/", data);
-      console.log(response);
+      alert("Comentario agregado correctamente")
     } catch (error) {
-      console.error(error.response);
+      if (error.response?.status === 400){
+        alert("Error de validación: " + JSON.stringify(error.response?.data))
+      }else if(error.response?.status === 404){
+        alert("Mascota no encontrada")
+      }else{
+        alert("No se pudo agregar el comentario :<")
+      }
     }
   };
 
@@ -46,8 +65,13 @@ function ComentariosDetallesPage() {
       alert("Comentario eliminado :p");
       fetchMascota(id);
     } catch (error) {
-      console.error(error.response?.data);
-      alert("No se pudo eliminar el comentario :CCC");
+      if(error.response?.status === 404){
+        alert("Comentario no encontrado")
+      }else if(error.response?.status === 401){
+        alert("No tiene autoorizacioón...")
+      }else{
+        alert("No se pudo eliminar el comentario :CCC");
+      }
     }
   };
 
@@ -57,7 +81,6 @@ function ComentariosDetallesPage() {
 
   const onclickEstado = async (id) => {
     const data = { estado: nuevoEstado };
-    console.log(data);
     updateEstado(id, data);
   };
 
