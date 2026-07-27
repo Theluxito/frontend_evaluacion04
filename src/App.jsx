@@ -1,7 +1,6 @@
-import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import MascotasPage from './pages/MascotasPage'
 import ComentariosDetallesPage from "./pages/ComentariosDetallesPage"
-import { Navigate } from 'react-router-dom';
 import './component/App.css'
 
 function App(){

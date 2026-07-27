@@ -82,9 +82,26 @@ function MascotasForm({onMascotaCreada}){
                 onMascotaCreada()
             }
         }catch(error){
-            alert("Error al crear mascota, archivo debe ser un formato de imagen")
-        }
+            if (error.response?.status === 400) {
+                alert("Error de validación: " + JSON.stringify(error.response.data));
+            }
 
+            if (error.response?.status === 404) {
+                alert("No se encontró el recurso solicitado.");
+            }
+
+            if (error.response?.status === 405) {
+                alert("Método HTTP no permitido.");
+            }
+
+            if (error.response?.status === 415) {
+                alert("El tipo de contenido enviado no es válido.");
+            }
+
+            if (!error.response) {
+                alert("No se pudo conectar con el servidor.");
+            }
+        }
     };
 
     return(
