@@ -32,3 +32,7 @@ linea 18 19 " comentarioslist " saber si textarea funcionava de diferente manera
 # uso de herramienta ia para mejorar funcionamiento de agregar comentarios
 
 linea 15-14 "comentarios list " se uso el await por que las funciones son asincronas entonces al enviar dos comentarios seguidos no esperaban para actualizar y no se actualizaba
+
+# uso de herramienta ia para el css de comentarios y detalles de mascotas
+
+La ia hizo la base del css para las pages y componentes, con intervencion de nosostros para manejar bien las imagenes (osea como creiamos que se verian bien)

@@ -35,12 +35,12 @@ function ComentariosList({ comentarios, idMascota, addComentario, actualizar, de
         />
         <button onClick={() => onClickComentario()}>Subir Comentario</button>
       </div>
+      <h2>Comentarios</h2>
       {comentarios.length === 0 ? (
         <p>No hay comentarios</p>
       ) : (
         comentarios.map((c) => (
           <div key={c.id}>
-            <h2>Comentarios</h2>
             <p>
               <strong>Autor: {c.autor}</strong>
             </p>
