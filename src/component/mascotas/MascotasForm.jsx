@@ -17,6 +17,42 @@ function MascotasForm({onMascotaCreada}){
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        if (nombre.trim() === ""){
+            alert("El nombre no puede estar vacio")
+            return
+        }
+        if (descripcion.trim() === ""){
+            alert("La descripción no puede estar vacia")
+            return
+        }
+        if (!imagen){
+            alert("Seleccione una imagen")
+            return
+        }
+        if (edad.trim() === ""){
+            alert("Edad no puede estar vacio")
+            return
+        }
+        if (isNaN(Number(edad))) {
+            alert("Edad tiene que ser un numero")
+        }
+        if (Number(edad) < 0){
+            alert("La edad no puede ser menor que 0")
+            return
+        }
+        if (raza.trim() === ""){
+            alert("Ingrese la raza de la mascota")
+            return
+        }
+        if (sexo === ""){
+            alert("Ingrese el sexo de la mascota")
+            return
+        }
+        if (tamano === ""){
+            alert("Ingrese el tamaño de la mascota")
+            return
+        }
+
         const formData = new FormData()
         formData.append("nombre", nombre)
         formData.append("descripcion", descripcion)
@@ -46,7 +82,7 @@ function MascotasForm({onMascotaCreada}){
                 onMascotaCreada()
             }
         }catch(error){
-            console.error("Error al crear mascota", error.response)
+            alert("Error al crear mascota, archivo debe ser un formato de imagen")
         }
 
     };
