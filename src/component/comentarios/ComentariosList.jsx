@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function ComentariosList({ comentarios, idMascota, addComentario, actualizar, deleteComentario }) {
+function ComentariosList({ comentarios, idMascota, addComentario, deleteComentario }) {
   const [nuevoComentario, setNuevoComentario] = useState("");
   const [autor, setautor] = useState("");
 
@@ -12,7 +12,6 @@ function ComentariosList({ comentarios, idMascota, addComentario, actualizar, de
     };
 
     await addComentario(nuevocomentario);
-    await actualizar(idMascota)
 
     setNuevoComentario("")
     setautor("")

@@ -56,6 +56,8 @@ function ComentariosDetallesPage() {
       }else{
         alert("No se pudo agregar el comentario :<")
       }
+    } finally {
+        fetchMascota(id)
     }
   };
 
@@ -63,7 +65,6 @@ function ComentariosDetallesPage() {
     try {
       await api.delete(`comentarios/${comentarioId}/`);
       alert("Comentario eliminado :p");
-      fetchMascota(id);
     } catch (error) {
       if(error.response?.status === 404){
         alert("Comentario no encontrado")
@@ -72,6 +73,8 @@ function ComentariosDetallesPage() {
       }else{
         alert("No se pudo eliminar el comentario :CCC");
       }
+    } finally {
+        fetchMascota(id);
     }
   };
 
@@ -125,7 +128,6 @@ function ComentariosDetallesPage() {
           comentarios={mascota?.comentarios ?? []}
           idMascota={id}
           addComentario={addComentario}
-          actualizar={fetchMascota}
           deleteComentario={deleteComentario}
         />
       </div>
