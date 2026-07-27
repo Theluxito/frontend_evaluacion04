@@ -25,7 +25,6 @@ function MascotasPage() {
     try{
       await api.delete(`mascotas/${id}/`)
       alert("Mascota eliminada :'v")
-      fetchMascotas()
     }catch(error){
       if(error.response?.status === 400){
         alert("Error de validación " + JSON.stringify(error.response?.data))
@@ -36,6 +35,8 @@ function MascotasPage() {
       }else{
         alert("No se pudo eliminar la mascota :<")
       }
+    }finally {
+      fetchMascotas()
     }
   }
   
