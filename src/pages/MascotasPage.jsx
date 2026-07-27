@@ -9,13 +9,15 @@ function MascotasPage() {
   const fetchMascotas = async () => {
     try {
       const response = await api.get("mascotas/");
-      console.log(response);
-
       if (response.status === 200) {
         setListaMascotas(response.data);
       }
     } catch (error) {
-      console.error(error.response);
+      if(error.response?.status === 404){
+        alert("No se encontraron mascotas DX")
+      }else{
+        alert("Error al cargar las mascotas u.u")
+      }
     }
   };
 
@@ -25,8 +27,15 @@ function MascotasPage() {
       alert("Mascota eliminada :'v")
       fetchMascotas()
     }catch(error){
-      console.error("Error al eliminar mascota", error.response?.data)
-      alert("No se pudo eliminar la mascota :<")
+      if(error.response?.status === 400){
+        alert("Error de validación " + JSON.stringify(error.response?.data))
+      }else if(error.response?.status === 404){
+        alert("Mascota no encontrada...")
+      }else if(error.response?.status === 401){
+        alert("No tiene autorización para eliminar!")
+      }else{
+        alert("No se pudo eliminar la mascota :<")
+      }
     }
   }
   
