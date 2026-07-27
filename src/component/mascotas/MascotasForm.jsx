@@ -60,9 +60,9 @@ function MascotasForm({onMascotaCreada}){
         formData.append("estado", estado)
         formData.append("tipo_animal", tipoAnimal)
         if (edad) formData.append("edad", edad)
-        if (edad) formData.append("raza", raza)
-        if (edad) formData.append("sexo", sexo)
-        if (edad) formData.append("tamano", tamano)
+        if (raza) formData.append("raza", raza)
+        if (sexo) formData.append("sexo", sexo)
+        if (tamano) formData.append("tamano", tamano)
 
         try{
             const response = await api.post("mascotas/", formData)
