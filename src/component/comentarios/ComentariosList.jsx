@@ -8,7 +8,7 @@ function ComentariosList({ comentarios }) {
         comentarios.map((c) => (
           <div key={c.id}>
             <h2>Comentarios</h2>
-            <p><strong>{c.autor}</strong></p>
+            <p><strong>Autor: {c.autor}</strong></p>
             <p>{c.contenido}</p>
           </div>
         ))

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-function MascotasList ({listamascotas}){
+function MascotasList ({listamascotas, onDeleteMascota}){
     const navegate = useNavigate()
 
     const handleVerDetalles = async (id) => {
@@ -26,6 +26,7 @@ function MascotasList ({listamascotas}){
               <p>Sexo: {m.sexo}</p>
               <p>Tamaño: {m.tamano}</p>
               <button onClick={() => handleVerDetalles(m.id)}>Ver Detalles</button>
+              <button onClick={() => onDeleteMascota(m.id)}>Eliminar</button>
             </li>
           ))}
         </ul>
