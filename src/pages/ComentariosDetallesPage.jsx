@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import api from "../services/Api";
 import ComentariosList from "../component/comentarios/ComentariosList";
 import "../component/ComentariosDetallesPage.css";
-import js from "@eslint/js";
 
 function ComentariosDetallesPage() {
   const { id } = useParams();
@@ -28,7 +27,8 @@ function ComentariosDetallesPage() {
   const updateEstado = async (id, data) => {
     try {
       const response = await api.patch(`mascotas/${id}/`, data);
-      alert("Estado actualizado correctamente");
+      if (response.status === 200)
+        {alert("Estado actualizado correctamente");}
     } catch (error) {
       if (error.response?.status === 400){
         alert("Error de validación: " + JSON.stringify(error.response?.data))
@@ -47,7 +47,8 @@ function ComentariosDetallesPage() {
   const addComentario = async (data) => {
     try {
       const response = await api.post("comentarios/", data);
-      alert("Comentario agregado correctamente")
+      if (response.status === 201)
+        {alert("Comentario agregado correctamente")}
     } catch (error) {
       if (error.response?.status === 400){
         alert("Error de validación: " + JSON.stringify(error.response?.data))
@@ -79,8 +80,24 @@ function ComentariosDetallesPage() {
   };
 
   useEffect(() => {
+
+    const fetchMascota = async (id) => {
+    try {
+      const response = await api.get(`mascotas/${id}/`);
+      if (response.status === 200) {
+        setMascota(response.data);
+      }
+    } catch (error) {
+      if (error.response?.status === 404){
+        alert("Mascota no encontrada...")
+      }else{
+        alert("Error al cargar la mascota")
+      }
+    }
+  };
+
     fetchMascota(id);
-  }, []);
+  }, [id]);
 
   const onclickEstado = async (id) => {
     const data = { estado: nuevoEstado };
