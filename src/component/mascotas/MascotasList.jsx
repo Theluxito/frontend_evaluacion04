@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 function MascotasList ({listamascotas, onDeleteMascota}){
     const navegate = useNavigate()
 
-    const handleVerDetalles = (id) => {
+    const handleVerDetalles = async (id) => {
         navegate(`/comentarios-detalles/${id}`)
-    } 
+    }
 
     return(
          <div>
