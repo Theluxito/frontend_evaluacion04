@@ -1,14 +1,49 @@
-function ComentariosList({ comentarios }) {
-  console.log(comentarios)
+import { act, useState } from "react";
+
+function ComentariosList({ comentarios, idMascota, addComentario, actualizar }) {
+  const [nuevoComentario, setNuevoComentario] = useState("");
+  const [autor, setautor] = useState("");
+
+  const onClickComentario = async () => {
+    const nuevocomentario = {
+      mascota: idMascota,
+      autor: autor,
+      contenido: nuevoComentario,
+    };
+
+    await addComentario(nuevocomentario);
+    await actualizar(idMascota)
+
+    setNuevoComentario("")
+    setautor("")
+  };
+
   return (
     <>
+      <div>
+        <textarea
+          placeholder="Escriba un comentario"
+          value={nuevoComentario}
+          onChange={(e) => setNuevoComentario(e.target.value)}
+          type="text"
+        />
+        <textarea
+          placeholder="autor"
+          value={autor}
+          onChange={(e) => setautor(e.target.value)}
+          type="text"
+        />
+        <button onClick={() => onClickComentario()}>Subir Comentario</button>
+      </div>
       {comentarios.length === 0 ? (
         <p>No hay comentarios</p>
       ) : (
         comentarios.map((c) => (
           <div key={c.id}>
             <h2>Comentarios</h2>
-            <p><strong>Autor: {c.autor}</strong></p>
+            <p>
+              <strong>Autor: {c.autor}</strong>
+            </p>
             <p>{c.contenido}</p>
           </div>
         ))

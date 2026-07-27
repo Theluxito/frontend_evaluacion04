@@ -24,3 +24,11 @@ Se utilizo chatgpt para solucionar problemas de rutas, App.jsx linea 16 ruta pri
 # Uso de herramienta ia para arreglar problema con datos undefined 
 
 Linea 38 " ComentariosList comentarios={mascota?.comentarios ?? []} " me dio la informacion para el uso de ?? que signfican si el dato anterior es undefined o null usa el de la derecha 
+
+# Uso de herramienta ia para estudiar funcionamiento de textarea
+
+linea 18 19 " comentarioslist " saber si textarea funcionava de diferente manera, resulta que no mucho xd
+
+# uso de herramienta ia para mejorar funcionamiento de agregar comentarios
+
+linea 15-14 "comentarios list " se uso el await por que las funciones son asincronas entonces al enviar dos comentarios seguidos no esperaban para actualizar y no se actualizaba

@@ -32,6 +32,15 @@ function ComentariosDetallesPage(){
     }
   }
 
+  const addComentario = async (data) => {
+    try {
+        const response = await api.post("comentarios/", data)
+        console.log(response)
+    } catch (error) {
+        console.error(error.response)
+    }
+  }
+
   useEffect(() => {
     fetchMascota(id)
   }, [])
@@ -61,7 +70,7 @@ function ComentariosDetallesPage(){
             <p>edad: {mascota?.edad}</p>
             <p>Sexo: {mascota?.sexo}</p>
             <p>Tamaño: {mascota?.tamano}</p>
-            <ComentariosList comentarios={mascota?.comentarios ?? []} />
+            <ComentariosList comentarios={mascota?.comentarios ?? []} idMascota={id} addComentario={addComentario} actualizar={fetchMascota}/>
         </div>
 )
 };

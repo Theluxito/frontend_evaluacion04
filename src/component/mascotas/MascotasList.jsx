@@ -22,7 +22,7 @@ function MascotasList({ listamascotas, onDeleteMascota }) {
                 Nombre: <strong>{m.nombre}</strong>
               </p>
               <p>Descripción: {m.descripcion}</p>
-              <p>Estado: {m.estado}</p>
+              <p>Estado : {m?.estado === "en_adopcion" ? "En adopción" : m?.estado }</p>
               <p>Tipo: {m.tipo_animal}</p>
               <p>Raza: {m.raza}</p>
               <p>Edad: {m.edad}</p>
