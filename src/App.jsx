@@ -9,7 +9,6 @@ function App(){
                 <header>
                     <nav>
                         <h1><strong>Página de mascotas</strong></h1>
-                        <NavLink to="/formulario" >Inscribe a tu mascota aqui</NavLink>
                     </nav>
                 </header>
 
