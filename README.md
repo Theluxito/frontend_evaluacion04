@@ -14,3 +14,25 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+# Yorbyn
+
+# Uso de herramienta ia para mejorar funcionamiento de rutas
+
+Se utilizo chatgpt para solucionar problemas de rutas, App.jsx linea 16 ruta principal "/" base de pagina 
+
+# Uso de herramienta ia para arreglar problema con datos undefined 
+
+Linea 38 " ComentariosList comentarios={mascota?.comentarios ?? []} " me dio la informacion para el uso de ?? que signfican si el dato anterior es undefined o null usa el de la derecha 
+
+# Uso de herramienta ia para estudiar funcionamiento de textarea
+
+linea 18 19 " comentarioslist " saber si textarea funcionava de diferente manera, resulta que no mucho xd
+
+# uso de herramienta ia para mejorar funcionamiento de agregar comentarios
+
+linea 15-14 "comentarios list " se uso el await por que las funciones son asincronas entonces al enviar dos comentarios seguidos no esperaban para actualizar y no se actualizaba
+
+# uso de herramienta ia para el css de comentarios y detalles de mascotas
+
+La ia hizo la base del css para las pages y componentes, con intervencion de nosostros para manejar bien las imagenes (osea como creiamos que se verian bien)
