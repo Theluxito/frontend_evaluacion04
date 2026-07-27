@@ -18,6 +18,17 @@ function MascotasPage() {
       console.error(error.response);
     }
   };
+
+  const deleteMascota = async (id) => {
+    try{
+      await api.delete(`mascotas/${id}/`)
+      alert("Mascota eliminada :'v")
+      fetchMascotas()
+    }catch(error){
+      console.error("Error al eliminar mascota", error.response?.data)
+      alert("No se pudo eliminar la mascota :<")
+    }
+  }
   
   useEffect(() =>{
     fetchMascotas();
@@ -26,7 +37,7 @@ function MascotasPage() {
   return(
     <>
       <MascotasForm onMascotaCreada={fetchMascotas}/>
-      <MascotasList listamascotas={listaMascotas} />
+      <MascotasList listamascotas={listaMascotas} onDeleteMascota={deleteMascota}/>
     </>
 ) 
     
