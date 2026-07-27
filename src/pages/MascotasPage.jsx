@@ -41,6 +41,22 @@ function MascotasPage() {
   }
   
   useEffect(() =>{
+
+    const fetchMascotas = async () => {
+    try {
+      const response = await api.get("mascotas/");
+      if (response.status === 200) {
+        setListaMascotas(response.data);
+      }
+    } catch (error) {
+      if(error.response?.status === 404){
+        alert("No se encontraron mascotas DX")
+      }else{
+        alert("Error al cargar las mascotas u.u")
+      }
+    }
+  };
+
     fetchMascotas();
   },[])
 
