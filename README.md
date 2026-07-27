@@ -36,3 +36,7 @@ linea 15-14 "comentarios list " se uso el await por que las funciones son asincr
 # uso de herramienta ia para el css de comentarios y detalles de mascotas
 
 La ia hizo la base del css para las pages y componentes, con intervencion de nosostros para manejar bien las imagenes (osea como creiamos que se verian bien)
+
+# use de herramienta ia para escritura rapida
+
+La ia se encargo de escribir de manera mas rapida los if de manejo de errores en el post de MascotasForm
