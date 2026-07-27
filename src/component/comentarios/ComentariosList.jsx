@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function ComentariosList({ comentarios, idMascota, addComentario, actualizar }) {
+function ComentariosList({ comentarios, idMascota, addComentario, actualizar, deleteComentario }) {
   const [nuevoComentario, setNuevoComentario] = useState("");
   const [autor, setautor] = useState("");
 
@@ -45,6 +45,7 @@ function ComentariosList({ comentarios, idMascota, addComentario, actualizar }) 
               <strong>Autor: {c.autor}</strong>
             </p>
             <p>{c.contenido}</p>
+            <button onClick={() => deleteComentario(c.id)}>Eliminar</button>
           </div>
         ))
       )}

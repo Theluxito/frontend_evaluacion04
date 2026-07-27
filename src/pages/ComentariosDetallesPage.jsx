@@ -41,6 +41,17 @@ function ComentariosDetallesPage(){
     }
   }
 
+  const deleteComentario = async (comentarioId) => {
+    try{
+      await api.delete(`comentarios/${comentarioId}/`)
+      alert("Comentario eliminado :p")
+      fetchMascota(id)
+    }catch(error){
+      console.error(error.response?.data)
+      alert("No se pudo eliminar el comentario :CCC")
+    }
+  }
+
   useEffect(() => {
     fetchMascota(id)
   }, [])
@@ -70,7 +81,7 @@ function ComentariosDetallesPage(){
             <p>edad: {mascota?.edad}</p>
             <p>Sexo: {mascota?.sexo}</p>
             <p>Tamaño: {mascota?.tamano}</p>
-            <ComentariosList comentarios={mascota?.comentarios ?? []} idMascota={id} addComentario={addComentario} actualizar={fetchMascota}/>
+            <ComentariosList comentarios={mascota?.comentarios ?? []} idMascota={id} addComentario={addComentario} actualizar={fetchMascota} deleteComentario={deleteComentario}/>
         </div>
 )
 };
