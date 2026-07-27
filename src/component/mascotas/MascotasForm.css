@@ -1,0 +1,48 @@
+.mascota-form{
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 24px;
+    background-color: rgb(226, 220, 220);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0,1);
+}
+
+.mascota-form h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.mascota-form label{
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.mascota-form input, .mascota-form select, .mascota.form textarea{
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.mascota-form input[type="file"]{
+    padding: 4px;
+}
+
+.mascota-form button{
+    width: 100%;
+    padding: 12px;
+    background-color: #4eaf52;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.mascota-form button:hover{
+    background-color: #27922d;
+}

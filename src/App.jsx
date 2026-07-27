@@ -2,13 +2,14 @@ import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import MascotasPage from './pages/MascotasPage'
 import ComentariosDetallesPage from "./pages/ComentariosDetallesPage"
 import { Navigate } from 'react-router-dom';
+import './component/App.css'
 
 function App(){
     return(
         <>
                 <header>
                     <nav>
-                        <h1><strong>Página de mascotas</strong></h1>
+                        <h1 className=''><strong>Página de mascotas</strong></h1>
                     </nav>
                 </header>
 

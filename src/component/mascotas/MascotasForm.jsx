@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import api from '../../services/Api'
+import "./MascotasForm.css"
 
 function MascotasForm({onMascotaCreada}){
 
@@ -51,7 +52,7 @@ function MascotasForm({onMascotaCreada}){
     };
 
     return(
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='mascota-form'>
             <h2>Crear Mascota</h2>
             <label>Nombre:</label>
             <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)}/>
